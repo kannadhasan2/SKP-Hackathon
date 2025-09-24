@@ -56,7 +56,7 @@ const Login = () => {
     };
 
     const jwtToken = Cookies.get("jwtToken");
-    if (jwtToken !== undefined) {
+    if (jwtToken === undefined) {
         return <Navigate to="/" />; 
     }
 
