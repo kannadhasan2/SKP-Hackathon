@@ -6,14 +6,14 @@ import jwt from "jsonwebtoken";
 
 const app = express();
 app.use(express.json());
-import cors from "cors";
 
 app.use(cors({
   origin: [
-    "https://skp-hackathon-ybms.vercel.app", // add your frontend domain
-    "https://skp-hackathon.vercel.app",      // backend domain (if needed)
+    "https://skp-hackathon-ybms.vercel.app", // your frontend
+    "https://skp-hackathon.vercel.app"       // backend domain (if needed)
   ],
-  credentials: true,
+  methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"], // allow common methods
+  credentials: true, // allow cookies/auth headers
 }));
 
 // Initialize Turso client
