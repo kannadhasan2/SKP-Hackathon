@@ -6,26 +6,11 @@ import jwt from "jsonwebtoken";
 
 const app = express();
 app.use(express.json());
-const allowedOrigins = [
-  "https://skp-hackathon-ybms-atmj0wmpq-kannadhasans-projects-2b21f9ac.vercel.app",
-  "https://skp-hackathon-ybms.vercel.app",
-  "https://skp-hackathon.vercel.app",
-  "http://localhost:5173",
-  "http://localhost:5174"
-];
 
 app.use(cors({
-  origin: function(origin, callback){
-    // allow requests with no origin (like Postman)
-    if(!origin) return callback(null, true);
-    if(allowedOrigins.indexOf(origin) === -1){
-      const msg = "The CORS policy for this site does not allow access from the specified Origin.";
-      return callback(new Error(msg), false);
-    }
-    return callback(null, true);
-  },
-  credentials: true
+  origin: "https://aec-cloud-book-snh8.vercel.app"  // allow your frontend
 }));
+
 
 // Initialize Turso client
 const db = createClient({
