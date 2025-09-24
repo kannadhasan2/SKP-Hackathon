@@ -6,12 +6,14 @@ import jwt from "jsonwebtoken";
 
 const app = express();
 app.use(express.json());
+import cors from "cors";
+
 app.use(cors({
   origin: [
-    "http://localhost:5174",     
-    "https://aec-cloud-book-snh8.vercel.app"
+    "https://skp-hackathon-ybms.vercel.app", // add your frontend domain
+    "https://skp-hackathon.vercel.app",      // backend domain (if needed)
   ],
-  credentials: true
+  credentials: true,
 }));
 
 // Initialize Turso client
