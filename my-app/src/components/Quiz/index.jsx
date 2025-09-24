@@ -22,7 +22,7 @@ export default function Quiz() {
   };
 
   useEffect(() => {
-    fetch("https://skp-hackathon.vercel.app/quiz")
+    fetch("http://localhost:5000/quiz")
       .then((res) => res.json())
       .then((data) => {
         setQuizData(data);

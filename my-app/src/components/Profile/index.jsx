@@ -18,7 +18,7 @@ const Profile = () => {
       },
     };
     try {
-      const response = await fetch("https://skp-hackathon.vercel.app/profile", options);
+      const response = await fetch("http://localhost:5000/profile", options);
       if (response.ok) {
         const data = await response.json()
         const updatedData = {

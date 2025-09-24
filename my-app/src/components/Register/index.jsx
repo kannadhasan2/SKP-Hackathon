@@ -42,7 +42,7 @@ const Register = () => {
     event.preventDefault();
       if (registerNo.length === 12) {
         if (dateOfBirth.length === 10) {
-          const url = 'https://skp-hackathon.vercel.app/register';
+          const url = 'http://localhost:5000/register';
           const student = { registerNo, dateOfBirth, email, department, username };
           const options = {
             method: 'POST',

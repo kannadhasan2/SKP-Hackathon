@@ -63,7 +63,7 @@ const Books = () => {
   }, [])
 
   const getBooks = async () => {
-    const url = 'https://skp-hackathon.vercel.app/books'
+    const url = 'http://localhost:5000/books'
     const response = await fetch(url)
     if (response.ok) {
       const data = await response.json()
