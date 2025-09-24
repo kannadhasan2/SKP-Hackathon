@@ -116,14 +116,22 @@ app.post("/register", async (req, res) => {
 
 app.post("/login", async (req, res) => {
   const { registerNo, dateOfBirth } = req.body;
-  const result = await db.execute({ sql: "SELECT * FROM student WHERE register_no = ?", args: [registerNo] });
-  if (!result.rows.length) return res.status(400).send("Invalid Register No");
+  if (!registerNo || !dateOfBirth) return res.status(400).send({ error: "Missing fields" });
 
-  const student = result.rows[0];
-  if (student.date_of_birth !== dateOfBirth) return res.status(400).send("Invalid Date Of Birth");
+  const dbStudent = await db.execute({
+    sql: "SELECT * FROM student WHERE register_no = ?",
+    args: [registerNo],
+  });
 
-  const jwtToken = jwt.sign({ register_no: registerNo }, process.env.JWT_SECRET);
-  res.send({ jwt_token: jwtToken });
+  if (!dbStudent.rows.length) return res.status(400).send({ error: "Invalid Register No" });
+
+  const student = dbStudent.rows[0];
+  if (student.date_of_birth === dateOfBirth) {
+    const jwtToken = jwt.sign({ register_no: registerNo }, process.env.JWT_SECRET);
+    return res.send({ jwt_token: jwtToken });
+  } else {
+    return res.status(400).send({ error: "Invalid Date Of Birth" });
+  }
 });
 
 app.get("/student-list", async (req, res) => {
