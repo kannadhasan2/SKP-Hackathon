@@ -13,7 +13,7 @@ const BookDetailedView = () => {
 
   const getBooks = async () => {
     
-    const url = `http://localhost:5000/book/${bookId}`
+    const url = `https://skp-hackathon.vercel.app/book/${bookId}`
     const response = await fetch(url)
     if (response.ok) {
       const data = await response.json()

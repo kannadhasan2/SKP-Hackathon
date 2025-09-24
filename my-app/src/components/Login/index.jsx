@@ -25,7 +25,7 @@ const Login = () => {
         if (registerNo.startsWith("5104")) {
             if (registerNo.length === 12) {
                 if (dateOfBirth.length === 10) {
-                    const url = "http://localhost:5000/login";
+                    const url = "https://skp-hackathon.vercel.app/login";
                     const student = { registerNo, dateOfBirth };
                     const options = {
                         method: "POST",
